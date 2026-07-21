@@ -6,6 +6,7 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
+  SignUpButton,
   UserButton,
 } from "@clerk/clerk-react";
 
@@ -52,9 +53,13 @@ const Navbar = () => {
                       {/* </button> */}
                    </header>
            
-            <button className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium transition-transform hover:scale-105 ripple">
-              Create an account
-            </button>
+            <SignedOut>
+              <SignUpButton>
+                <button className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg font-medium transition-transform hover:scale-105 ripple">
+                  Create an account
+                </button>
+              </SignUpButton>
+            </SignedOut>
           </div>
 
           {/* Mobile Menu */}
@@ -90,9 +95,13 @@ const Navbar = () => {
                       {/* </button> */}
                    </header>
               {/* </button> */}
-              <button className="relative overflow-hidden py-2 px-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:scale-105 transition-transform ripple">
-                Create an account
-              </button>
+              <SignedOut>
+                <SignUpButton>
+                  <button className="relative overflow-hidden py-2 px-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:scale-105 transition-transform ripple">
+                    Create an account
+                  </button>
+                </SignUpButton>
+              </SignedOut>
             </div>
           </div>
         )}

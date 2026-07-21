@@ -90,6 +90,7 @@ ipython_config.py
 
 # pyenv
 .python-version
+!backend/.python-version
 
 # pipenv
 # According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -147,3 +148,4 @@ cython_debug/
 
 # Temporary files
 uploads/
+interview.md

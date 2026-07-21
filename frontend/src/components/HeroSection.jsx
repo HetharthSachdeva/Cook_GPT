@@ -73,7 +73,7 @@ const HeroSection = () => {
             Start for Free
           </button> */}
           <a
-            href="#"
+            href="https://github.com/vsmay-01/Cook_GPT/blob/main/README.md"
             className="py-3 px-6 rounded-lg border border-neutral-700 text-neutral-300 hover:bg-neutral-800 transition-colors"
           >
             Documentation

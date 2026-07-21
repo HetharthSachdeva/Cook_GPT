@@ -3,9 +3,9 @@ import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 import { SelectedCollectionContext } from "../../context/SelectedContext";
 import { ChatResContext } from "../../context/ChatResContext";
+import { API_URL } from "../../apiBaseUrl";
 import ChatLoader from "./ChatLoader";
 import EmptyPage from "./EmptyPage";
-const API_URL = "https://cook-backend-8gfj.onrender.com";
 export default function Dashboard() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -58,19 +58,21 @@ export default function Dashboard() {
       const response = await axios.post(
         `${API_URL}/query`,
         {
-          user: user?.username || "princekumar04",
+          user: user?.id,
           collection: selected || "default_collection",
           query: currentUserInput,
         },
         { headers: { "Content-Type": "application/json" } }
       );
-      setRerankedDocuments(response.data.reranked_documents[0].content);
-      setResponse(response.data.llm_response);
+      const documents =
+        response.data?.retrieved_documents || response.data?.reranked_documents || [];
+      setRerankedDocuments(documents[0]?.content || "");
+      setResponse(response.data?.llm_response || "");
 
       setMsg((prev) =>
         prev.map((item) =>
           item.id === loadingMessageId
-            ? { text: response.data.llm_response, sender: "bot" }
+            ? { text: response.data?.llm_response || "No response generated.", sender: "bot" }
             : item
         )
       );
